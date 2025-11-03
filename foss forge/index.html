@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Basic HTML5 document setup with responsive viewport -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ADVENTURE</title>
+        
+        <!-- TODO: Add meta description and keywords for better SEO -->
+        <!-- TODO: Consider adding Open Graph meta tags for social media sharing -->
+        <!-- External CSS libraries and custom stylesheets -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <!-- TODO: Consider upgrading to Font Awesome 6 for more icons and better performance -->
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/responsive.css" />
+
+        <!-- Favicon and app icons for different devices -->
+       
+        <link rel="manifest" href="/site.webmanifest" />
+    </head>
+    <body
+        onload='if (window.location.href.substr(window.location.href.length - 6) == "#about") { introAboutLogoTransition(); }'
+    >
+        <!-- TODO: Move inline JavaScript to external file for better maintainability -->
+        <!-- TODO: Add loading spinner/animation for better UX -->
+        
+        <!-- NAVIGATION BAR SECTION -->
+        <!-- Fixed navigation bar with glassmorphism effect -->
+        <nav class="navbar glass" style="height: 70px">
+            <!-- Logo section with mountain icon and brand name -->
+            <!-- TODO: Move inline styles to CSS classes for better maintainability -->
+            <span
+                ><a href="#home" style="display: flex; align-items: center"
+                    ><img
+                        class="img2"
+                        src="data:image/jpeg;base64,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"
+                        width="40"
+                        style="margin: -25px -10px -25px -20px"
+                        alt="Adventure Logo"
+                    />
+                    <!-- TODO: Add alt text to all images for accessibility -->
+                    <h1 class="logo">&nbsp;ADVENTURE</h1></a
+                ></span
+            >
+            <!-- Main navigation menu with smooth scroll links -->
+            <ul class="nav-links">
+                <!-- TODO: Add ARIA labels for better screen reader support -->
+                <li>
+                    <a href="#home" id="pri" class="active cir_border">Home</a>
+                </li>
+                <li><a href="#events" id="sec" class="cir_border">Events</a></li>
+                <li>
+                    <a href="#explore" id="tri" class="cir_border">Explore</a>
+                </li>
+                <li>
+                    <a href="#tours" id="quad" class="cir_border">Tours</a>
+                </li>
+                <li><a href="#about" id="quint" class="cir_border">About</a></li>
+                <li>
+                    <a href="#contribution" id="hex" class="cir_border"
+                        >Contributions</a
+                    >
+                </li>
+                <li>
+                    <a href="#contact" id="hept" class="cir_border">Contact</a>
+                </li>
+                <!-- Dark/Light mode toggle switch -->
+                <li>
+                    <div>
+                        <!-- TODO: Add keyboard navigation support for toggle -->
+                        <input
+                            type="checkbox"
+                            class="checkbox dark"
+                            id="checkbox"
+                        />
+                        <label for="checkbox" class="label">
+                            <i class="fa fa-moon-o"></i>
+                            <i class="fa fa-sun-o"></i>
+                            <div class="ball"></div>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <!-- Mobile hamburger menu button -->
+            <img src="./img/menu-btn.png" alt="Mobile menu button" class="menu-btn" />
+            <!-- TODO: Replace image with CSS-only hamburger icon for better performance -->
+        </nav>
+        
+        <!-- HERO SECTION -->
+        <header id="home">
+            <!-- Hero content with animated text and call-to-action -->
+            <div class="header-content">
+                <!-- Animated gradient text effect -->
+                <h2 id="quote">Explore the colourful World</h2>
+                <!-- TODO: Add more dynamic text animations or typing effect -->
+                <div class="line"></div>
+                <h1>A WONDERFUL GIFT</h1>
+                <!-- TODO: Move inline JavaScript to external file -->
+                <!-- TODO: Add more engaging CTAs like "Start Your Journey" -->
+                <a
+                    href="#about"
+                    class="ctn"
+                    onclick='removeall(); $("#quad").css("border", "2px solid whitesmoke"); $("#quad").css("border-radius", "20px");'
+                    >Learn more</a
+                >
+            </div>
+        </header>
+        <!-- WEATHER SECTION -->
+<section class="weather" id="weather">
+    <div class="container">
+        <div class="title">
+            <h1 class="font-color">Current Weather</h1>
+            <div class="line"></div>
+        </div>
+        <div class="weather-info">
+            <p><strong>Location:</strong> <span id="weather-location">Mathura</span></p>
+            <p><strong>Temperature:</strong> <span id="weather-temp">--</span>23°C</p>
+            <p><strong>Humidity:</strong> <span id="weather-humidity">--</span>84%</p>
+        </div>
+    </div>
+</section>
+
+        <!-- EVENTS SECTION -->
+        <!-- Showcases upcoming adventure events and activities -->
+        <section class="events" id="events">
+            <div class="container">
+                <div class="title">
+                    <h1 class="dark">Upcoming Events</h1>
+                    <div class="line"></div>
+                </div>
+                <!-- TODO: Add event filtering by category, date, or location -->
+                <!-- TODO: Implement dynamic event loading from API or JSON -->
+                <div class="row">
+                    <!-- Event card component - reusable design pattern -->
+                    <article class="card col">
+                        <!-- TODO: Add lazy loading for images -->
+                        <!-- TODO: Add proper alt text describing the event -->
+                        <img class="card-img" src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Everest Base Camp Trek scenic view" />
+                        <h4 class="dark">Everest camp trek</h4>
+                        <p class="font-color">
+                            Everest base camp trek is without a doubt, one of
+                            the most renowned travel destinations in the world.
+                        </p>
+                        <!-- TODO: Link to detailed event page instead of placeholder -->
+                        <!-- TODO: Add event date, price, and booking functionality -->
+                        <a href="#" class="ctn">All Details</a>
+                    </article>
+                    <article class="card col">
+                        <img src="https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWR2ZW50dXJlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Walking holidays scenic trail" />
+                        <h4 class="dark">Walking holidays</h4>
+                        <p class="font-color">
+                            Join small guided group walks, enjoy a challenging
+                            trek, or a luxury private guided walk which can be
+                            made especially for you.
+                        </p>
+                        <a href="#" class="ctn">All Details</a>
+                    </article>
+                    <article class="card col">
+                        <img src="https://plus.unsplash.com/premium_photo-1669750817438-3f7f3112de8d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmVhY2h8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Andaman Beaches crystal clear waters" />
+                        <h4 class="dark">Andaman Beaches</h4>
+                        <p class="font-color">
+                            Diving in Andaman Beaches is exceptional. The costal
+                            belt surroundings is one of the richest coral reef
+                            ecosystems in the world.
+                        </p>
+                        <!-- TODO: Fix typo "costal" should be "coastal" -->
+                        <a href="#" class="ctn">All Details</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!--Events-->
+
+        <!-- EXPLORE SECTION -->
+        <!-- Full-screen parallax section with inspirational content -->
+        <section class="explore" id="explore">
+            <div class="explore-content">
+                <h1>EXPLORE THE WORLD</h1>
+                <div class="line"></div>
+                <p>
+                    “Travel makes one modest. You see what a tiny place you
+                    occupy in the world.”– Gustav Flaubert <br />Exploring will
+                    make you want to pack your bag, book that ticket and jet
+                    away.
+                </p>
+                <!-- TODO: Add more inspirational quotes that rotate -->
+                <!-- TODO: Link to destinations gallery or blog -->
+                <a href="#" class="ctn">Explore more</a>
+            </div>
+        </section>
+
+        <!-- TOURS SECTION -->
+        <!-- Displays upcoming tours with image gallery -->
+        <section class="tours" id="tours">
+            <div class="container row">
+                <div class="col content-col">
+                    <h1 class="font-color">UPCOMING TOURS & DESTINATION</h1>
+                    <div class="line"></div>
+                    <!-- TODO: Replace static dates with dynamic content -->
+                    <!-- TODO: Add booking system integration -->
+                    <!-- TODO: Update dates to current year -->
+                    <p>
+                        Wed 28 sept 2023 : Port of Spain City Tour and Birdseye
+                        Fort View. <br />
+                        Sat 1 oct 2023 : Tour the Gasparee Caves.<br />
+                        Tues 4 oct 2023 : Trinidad North Coast Experience.
+                        <br />
+                        and many more ......
+                    </p>
+                    <a href="#" class="ctn">Learn more</a>
+                </div>
+                <!-- Image gallery showcasing tour destinations -->
+                <div class="image-col">
+                    <div class="image-gallery">
+                        <!-- TODO: Add proper alt text for each destination -->
+                        <!-- TODO: Implement image lightbox/modal functionality -->
+                        <img src="https://media.istockphoto.com/id/1406974336/photo/train-passing-over-nine-arch-bridge.webp?a=1&b=1&s=612x612&w=0&k=20&c=dxLa3uS5cqsKXCGRZsBJ5FrioEz-8GLIygKELOi2Dk0=" />
+                        <img src="https://media.istockphoto.com/id/942152278/photo/gadisar-lake-at-jaisalmer-rajasthan-at-sunrise-with-ancient-temples-and-archaeological-ruins.webp?a=1&b=1&s=612x612&w=0&k=20&c=G-J9Za6tXae7ObbVL7T8015zlI-FeEyQ8_Du-7pVIT8=" alt="Tour destination 2" />
+                        <img src="https://media.istockphoto.com/id/1371289822/photo/himalayan-village-town-of-kalpa-with-kailash-mountain-snow-peaks-at-himachal-pradesh-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=2NpcDi074ctKEE7fN2mB_usOs9EFmB_BV8Ir4_r3hfE=" alt="Tour destination 3" />
+                        <img src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.webp?a=1&b=1&s=612x612&w=0&k=20&c=KvQq5YpYZepJmWkDa1R3MeQb2Xrd5tLjpoS9kvIf4GY=" alt="Tour destination 4" />
+                    </div>
+                </div>
+            </div>
+            <!-- <br /><br /><br /><br /> -->
+        </section>
+        <!--tours-->
+
+        <!-- ABOUT SECTION -->
+        <!-- Features an interactive image carousel with company branding -->
+        <section id="about">
+            <div class="title">
+                <h1 class="font-color">About Us</h1>
+                <div class="line"></div>
+            </div>
+            <br />
+            <!-- TODO: Add actual about us content/story -->
+            <!-- TODO: Include company mission, vision, and values -->
+            <div id="about_us">
+                <div class="boxx">
+                    <!-- Interactive 3D carousel component -->
+                    <div class="containerx">
+                        <!-- Radio buttons for carousel navigation -->
+                        <input type="radio" name="slider" id="item-1" checked />
+                        <input type="radio" name="slider" id="item-2" />
+                        <!-- <input type="radio" name="slider" id="item-3" /> -->
+                        <!-- TODO: Add keyboard navigation support -->
+                        <!-- TODO: Add auto-play functionality -->
+                        <div class="cards">
+                            <label class="cardt" for="item-1" id="col-img-1">
+                                <img src="https://media.istockphoto.com/id/825020012/photo/indian-palace.webp?a=1&b=1&s=612x612&w=0&k=20&c=Pd45tGIIlRvITZYVbPudq1h1pQrFQeV50p60VE8_LlM=" alt="Adventure destination showcase 1" />
+                            </label>
+                            <label class="cardt" for="item-2" id="col-img-2">
+                                <img src="https://media.istockphoto.com/id/2161498980/photo/woman-walking-on-crowded-street-in-old-town-of-jaisalmer-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=t7YkfMlPA1yykoBV9vlfuVpqWqyZMtusisx5XaYfXMw=" alt="Adventure destination showcase 2" />
+                            </label>
+                            
+                        </div>
+                    </div>
+                    <span id="about-quad"
+                        ><a href="#home"
+                            ><center>
+                                <h1
+                                    style="
+                                        font-family: var(--ff-montserrat);
+                                        color: #347045;
+                                        margin-top: 20px;
+                                    "
+                                >
+                                    Find that
+                                </h1>
+                                <br />
+                                <img
+                                    class="img2"
+                                    src="https://images.unsplash.com/photo-1760441114242-81cd0a9ff510?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzOXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=60&w=600"
+                                    width="200"
+                                    style="border-radius: 12%"
+                                />
+                                
+                              
+                              
+                                <br />
+                                <h1 class="logo" style="font-size: 50px">
+                                    ADVENTURE
+                                </h1>
+                            </center>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <!-- About -->
+
+        <!-- CONTRIBUTORS SECTION -->
+        <!-- Showcases all project contributors with GitHub profiles -->
+        <div class="title">
+            <h1 class="font-color">Contributors</h1>
+            <div class="line"></div>
+        </div>
+        <!-- TODO: Auto-generate contributor cards from GitHub API -->
+        <!-- TODO: Add contribution statistics (commits, PRs, etc.) -->
+        <section class="contributors" id="contribution">
+            <!-- Contributor card component - reusable pattern -->
+            <div class="concard">
+                <img
+                    src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600"
+                    alt="Pritam Sarbajna profile picture"
+                    class="pfp"
+                />
+                <div class="text">
+                    <h1>Shilpi</h1>
+                </div>
+                <div class="logolink">
+                    <a href="https://github.com/sumitsorout" target="_blank" rel="noopener noreferrer"
+                        ><img
+                            src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                            alt="GitHub Logo"
+                            class="github-logo"
+                    /></a>
+                </div>
+            </div>
+
+
+            <div class="concard">
+                <img
+                    src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600"
+                    alt="profile-picture"
+                    class="pfp"
+                />
+                <div class="text">
+                    <h1>Archi</h1>
+                </div>
+                <div class="logolink">
+                    <a href="https://github.com/athar-ansari" target="_blank"
+                        ><img
+                            src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                            alt="Github-Logo"
+                            class="github-logo"
+                    /></a>
+                </div>
+            </div>
+
+            <div class="concard">
+                <img
+                    src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600"
+                    alt="profile-picture"
+                    class="pfp"
+                />
+                <div class="text">
+                    <h1>Keshav</h1>
+                </div>
+                <div class="logolink">
+                    <a href="https://github.com/prakhartiwari0" target="_blank"
+                        ><img
+                            src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                            alt="Github-Logo"
+                            class="github-logo"
+                    /></a>
+                </div>
+            </div>
+
+            </div>
+        </section>
+        <!-- Contributions -->
+
+        <!-- CONTACT SECTION -->
+        <!-- Contact form with validation and alternative contact methods -->
+        
+        <!-- contact  -->
+        <!-- SCROLL TO TOP BUTTON -->
+        <!-- Fixed position button that appears on scroll -->
+        <!-- TODO: Add smooth scroll animation -->
+        <!-- TODO: Add keyboard accessibility -->
+        <i class="arrow"  onclick="topFunction()" id="upbtn" role="button" tabindex="0" aria-label="Scroll to top"></i>
+        
+        <!-- FOOTER SECTION -->
+        
+        <!--footer-->
+
+        <!-- JAVASCRIPT -->
+        <!-- Mobile menu toggle functionality -->
+        <script>
+            // TODO: Move to external file for better organization
+            const menuBtn = document.querySelector(".menu-btn");
+            const navlinks = document.querySelector(".nav-links");
+
+            menuBtn.addEventListener("click", () => {
+                navlinks.classList.toggle("mobile-menu");
+            });
+        </script>
+        <!-- External JavaScript libraries and custom scripts -->
+        <!-- TODO: Consider using a more modern alternative to jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="main.js"></script>
+        <!-- CHATBOT UI -->
+<div class="chatbot">
+    <div class="chatbot-header">
+        <h4>Adventure Bot</h4>
+        <span class="chatbot-close">&times;</span>
+    </div>
+    <div class="chatbot-body">
+        <div class="chat-message bot">Hi! How can I assist you today?</div>
+    </div>
+    <div class="chatbot-input">
+        <input type="text" placeholder="Type your message..." />
+        <button class="send-btn">Send</button>
+    </div>
+</div>
+<button class="chatbot-toggle" ><a href="https://quillbot.com/ai-chat">💬</a></button>
+
+<!-- MAP & HOTELS SECTION -->
+<section id="map-hotels">
+    <div class="title">
+        <h1 class="font-color">Explore Nearby</h1>
+        <div class="line"></div>
+    </div>
+    <div class="map-container">
+        <!-- Google Map iframe -->
+        <iframe
+            id="map"
+            src="kk.html"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+        ></iframe>
+        <div class="hotels-list">
+            <h3>Nearby Hotels</h3>
+            <ul>
+                <li><a target="_blank"  href="https://www.agoda.com/search?campaignid=23142015261&searchdatetype=default&lt=2&numberofchildren=0&gsite=localuniversal&partnercurrency=INR&roomid=743261061&masterroomid=743261061&pricetax=68.57&pricetotal=1135.87&usercountry=IN&currency=INR&userdevice=desktop&verif=false&mcid=332&booking_source=cpc&adtype=1&mpt=MUN2SXpRb29ONDIveHhGZ0dWcTBiTVFVWFUwRkZSVXZ2QUNQaExZYlk1NG96YksxZWN4c1FwaUd3NjhGUWgzbGpRPT0&original_rr=IN&gad_source=1&gad_campaignid=23142015261&gbraid=0AAAAAC_zgIxnnUlergpRE3mQUdgsiEVd8&gclid=Cj0KCQjwmYzIBhC6ARIsAHA3IkQcp1Q3B2J83d3PX0-_4sh6O-dn2JZj9_H6vscAMTpBwwRU4va8gaYaArnGEALw_wcB&los=1&adults=2&rooms=1&checkin=2025-11-01&checkout=2025-11-02&selectedproperty=2190978&city=15783&cid=1917614&pslc=1&ds=DQwlfLbB%2B8Y4wSzZ">Hotel Shyam Inn</a></li>
+                <li><a target="_blank"  href="agoda.com/en-in/radha-madhavam-luxurious-boutique-stay/hotel/mathura-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1917614&numberOfBedrooms=&familyMode=false&adults=2&children=0&rooms=1&maxRooms=0&checkIn=2025-11-1&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tspTypes=6,-1&los=1&searchrequestid=be28a660-d9a9-4402-aa3c-74b17c0a87ce">Radha Valley</a></li>
+                <li><a target="_blank"  href="https://www.booking.com/searchresults.en-gb.html?aid=2419802&label=metagha-link-LUIN-hotel-12596991_dev-desktop_los-1_bw-2_dow-Saturday_defdate-1_room-0_gstadt-2_rateid-0_aud-0_gacid-21415141192_mcid-10_ppa-1_clrid-0_ad-1_gstkid-0_checkin-20251101_ppt-_lp-2356_r-9230224524068300616&utm_medium=localuniversal&hca=m&no_rooms=1&show_room=1259699101_398592197_2_42_0&utm_content=dev-desktop_los-1_bw-2_dow-Saturday_defdate-1_room-0_gstadt-2_rateid-0_aud-0_gacid-21415141192_mcid-10_ppa-1_clrid-0_ad-1_gstkid-0_checkin-20251101_ppt-&utm_campaign=IN&utm_term=hotel-12596991&gclid=Cj0KCQjwmYzIBhC6ARIsAHA3IkRZhY413Sk8Di1aT4zXL9xe2A0D-K-kWXIImR51IDxLQN-S8aygi7gaAuVEEALw_wcB&ext_price_total=16520.00&utm_source=metagha&ts=1761841512&highlighted_hotels=12596991&checkin=2025-11-01&redirected=1&dest_type=hotel&hlrd=with_dates&group_adults=2&dest_id=12596991&source=hotel&group_children=0&checkout=2025-11-02&keep_landing=1&sid=b69dcbea3b5a1a82766cefae3b3906ff">Raddison Hotel Vrindavan</a></li>
+                <li><a target="_blank"  href="https://www.skyscanner.net/sttc/px/captcha-v2/index.html?url=L2hvdGVscy9zZWFyY2g/aG90ZWxfY2FtcGFpZ249MjI0NDQ3NjE5ODImZ2NsaWQ9Q2owS0NRandtWXpJQmhDNkFSSXNBSEEzSWtRalhYYnItVENoSG5YYUNJZHQ3MjA0eTQ5eUFUU3JyMER3WUhKSUN5RHNvcEIyeW5GTEU0OGFBaXBVRUFMd193Y0ImZ2NsaWQ9Q2owS0NRandtWXpJQmhDNkFSSXNBSEEzSWtRalhYYnItVENoSG5YYUNJZHQ3MjA0eTQ5eUFUU3JyMER3WUhKSUN5RHNvcEIyeW5GTEU0OGFBaXBVRUFMd193Y0ImZGF0ZV90eXBlPWRlZmF1bHQmZ2Nsc3JjPWF3LmRzJmVudGl0eV9pZD0xMzQ2MTE3NjMmZ2JyYWlkPTBBQUFBQUQzb1dGaWlyQV8yWndFaG5lSHRsXzNHWEhZaDkmdXBzb3J0X2hvdGVscz0xMzQ2MTE3NjMmYWR1bHRzPTImY2hlY2tpbj0yMDI1LTExLTAxJmFkZ3JvdXBpZD0xODM0NDM5NTQ1NTEmY2hlY2tvdXQ9MjAyNS0xMS0wMiZjcmVhdGl2ZT03NTY1MDA4MjE4ODUmY3VycmVuY3k9SU5SJnRhcmdldGlkPWhwaS0yNTEzNzczNTE0ODM3Jm1hcmtldD1JTiZkZXZpY2U9ZGVza3RvcCZzb3VyY2U9R29vZ2xlSHBhJnV0bV9tZWRpdW09aHBhJmdhZF9jYW1wYWlnbmlkPTIyNDQ0NzYxOTgyJnV0bV9zb3VyY2U9Z29vZ2xlX3BhaWQmZ2FkX3NvdXJjZT0xJmNhbXBhaWduaWQ9MjI0NDQ3NjE5ODImaHBhX3ZlcmlmaWNhdGlvbj1mYWxzZSZ0cmFjZV9pbmZvPXpOdjdBNzd5VjhxZ2tsMUIwdl9pd1hsQ0JyRFloQjVSX1MtYUZtZURYdzRzSDloWk1Qd0RIakJXUVdyMnFGdlQ1WXU0UGc2Z0V5b19KN0dua3JiMkFMMC1HSE9mY1N4cnlBd2wzTHJ1NWJTSDluZ0VJSEpLdGxWNGJrZXVBVnMtc1lUNFhTaGhHYThqQktZUGgyR2pfM2RyQXF3a2JuVHljTGx0dlpETVVBJTNEJTNEJnV0bV9jYW1wYWlnbj1nb29nbGVfYWRfSU4tSG90ZWxzLVNlYXJjaC1HZW5lcmljLURlc2t0b3AtUFBBJmxvY2FsZT1lbi1HQiZhc3NvY2lhdGVJRD1IUEFfSFRMXzE5NDY1XzAwMDAwJnVzZXJfY291bnRyeT1JTiZleHRyYV90cmFjZV9pbmZvPQ==&uuid=8cbda2e3-b5b1-11f0-8d3a-40c3b4aed3cb&vid=">Hotels divinity by Audra Hotels</a></li>
+                <li><a target="_blank" href="https://www.zenhotels.com/hotel/india/vrindavan/?dates=01.11.2025-02.11.2025&deals=disabled&gad_campaignid=19154387457&gad_source=1&gbraid=0AAAAACsmZVDmwkTKA8abN2fCD2dPyO0gF&guests=2&hotelId=hotel_gayatri_palace_vrindavan&lang=en&q=965883584&scroll=prices&session=0&showed_price=2171.03&showed_taxes=0.00">Gayatri Palace</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section id="contact">
+            <div class="title">
+                <h1 class="font-color">Contact Us</h1>
+                <div class="line"></div>
+            </div>
+            <div class="contact_us">
+                <!-- TODO: Add form validation and error handling -->
+                <!-- TODO: Implement backend form processing -->
+                <!-- TODO: Add success/error messages -->
+                <form class="cform" action="" method="post">
+                    <div class="crow-message">
+                        <h1 class="color">Send us a message</h1>
+                        <div></div>
+                    </div>
+                    <div class="crow-in">
+                        <!-- TODO: Add required field validation -->
+                        <!-- TODO: Add proper input types and validation patterns -->
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Your name"
+                            required
+                        />
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Your Email id"
+                            required
+                        />
+                    </div>
+                    <div class="crow">
+                        <div class="ccol-left">
+                            <select name="country" id="country">
+                                <option value="India">India</option>
+                                <option value="Russia">Russia</option>
+                                <option value="usa">USA</option>
+                                <option value="Japan">Japan</option>
+                                <option value="France">France</option>
+                                <option value="Brazil">Brazil</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="crow">
+                        <div class="ccol-left">
+                            <textarea
+                                type="text"
+                                id="remarks"
+                                name="remarks"
+                                placeholder="Your Remarks....."
+                                style="height: 150px"
+                            ></textarea>
+                        </div>
+                    </div>
+                    <input class="crow-s" type="submit" value="Submit" />
+                </form>
+                <div class="cbox">
+                    <div>
+                        <p class="cbox-message">
+                            Prefer some other way ?<br />Reach us by using the
+                            details given below
+                        </p>
+                        <div class="cbox-line"></div>
+                    </div>
+                    <div class="c_boxx">
+                        <a href="mailto:abc@gmail.com"
+                            ><i class="fa fa-envelope"></i>
+                            Mail: tourism@adventure.com
+                        </a>
+                    </div>
+                    <div class="c_boxx">
+                        <a href="tel:+91-12345-67890"
+                            ><i class="fa fa-phone"></i>
+                            Phone: (+91) 12345-67890
+                        </a>
+                    </div>
+                    <div class="c_boxx">
+                        <a href="#"
+                            ><i class="fa fa-map-marker"></i>
+                            Location: Kolkata,West Bengal,India
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+<section class="footer">
+            <span
+                >Created By Archi | &#169; 2025 All rights
+                reserved.</span
+            >
+            <div class="social">
+                <li>
+                    <a
+                        href="https://pritam-sarbajna-portfolio.netlify.app/"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa fa-globe"></i
+                    ></a>
+                    <a
+                        href="https://github.com/PritamSarbajna"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa fa-github"></i
+                    ></a>
+                    <a
+                        href="https://www.linkedin.com/in/pritam-sarbajna-74945821b/"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa fa-linkedin-square"></i
+                    ></a>
+                </li>
+            </div>
+</section>
+
+
+    </body>
+</html>
